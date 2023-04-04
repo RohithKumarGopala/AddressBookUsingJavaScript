@@ -21,84 +21,84 @@ class ContactDetails{
     }
 
     get firstName(){
-    return this.firstName;
+    return this._firstName;
    }
     set firstName(firstName){
     let firstNameRegex = RegExp('^[A-Z]{1}[a-z]{3,}');
     if(firstNameRegex.test(firstName))
-    this.firstName = firstName;
+    this._firstName = firstName;
     else throw 'First Name start with capital letter and have minimum 3 character';
    }
     get LastName(){
-    return this.LastName;
+    return this._LastName;
    }
     set LastName(LastName){
         let LastNameRegex = RegExp('^[A-Z]{1}[a-z]{3,}');
         if(LastNameRegex.test(LastName))
-        this.LastName =LastName;
+        this._LastName =LastName;
         else throw 'Last Name start with capital letter and have minimum 3 character';
        }
 
    get address(){
-    return this.address;
+    return this._address;
    }
     set address(address){
         let addressRegex = RegExp('^[A-Za-z]{4,}');
         if(addressRegex.test(address))
-        this.address =address;
+        this._address =address;
         else throw 'Address is Incorrect';
        }
 
    get city(){
-    return this.city;
+    return this._city;
    }
    set city(city){
     let cityRegex = RegExp('^[A-Za-z]{4,}');
     if(cityRegex.test(city))
-    this.city =city;
+    this._city =city;
     else throw 'city is Incorrect';
    }
    
    get state(){
-    return this.state;
+    return this._state;
    }
    set state(state){
     let stateRegex = RegExp('^[A-Za-z]{4,}');
     if(stateRegex.test(state))
-    this.state =state;
+    this._state =state;
     else throw 'state is Incorrect';
    }
     get zip(){
-    return this.zip;
+    return this._zip;
    }
    set zip(zip){
     let zipRegex = RegExp('^\d{5}(?:[-\s]\d{4})?');
     if(zipRegex.test(zip))
-    this.zip =zip;
+    this._zip =zip;
     else throw 'zip is Incorrect';
    }
    get phonenumber(){
-    return this.phonenumber;
+    return this._phonenumber;
    }
    set phonenumber(phonenumber){
     let phonenumberRegex = RegExp('[19]{2}[0-9]{10}');
     if(phonenumberRegex.test(phonenumber))
-    this.phonenumber =phonenumber;
+    this._phonenumber =phonenumber;
     else throw 'phonenumber is Incorrect';
    }
    get email(){
-    return this.email;
+    return this._email;
    }
    set email(email){
     let emailRegex = RegExp('^([A-Za-z0-9\_\.\-]+)@([a-z]+)\.([a-z]{5}(\.[a-z])?');
     if(emailRegex.test(email))
-    this.email =email;
+    this._email =email;
     else throw 'email is Incorrect';
    }
 
  
    toString(){
-    return "\nfirstName:"+this.firstName+"\nLastName:"+this.LastName+"\naddress:"+this.address+"\ncity:"+this.city+"\nstate:"+this.state+"\nzip:"+this.zip+"\nphone:"+this.phonenumber+"\nemail:"+this.email;
+    return "firstName:"+this.firstName+"\nLastName:"+this.LastName+"\naddress:"+this.address+"\ncity:"+this.city+"\nstate:"+this.state+"\nzip:"+this.zip+"\nphone:"+this.phonenumber+"\nemail:"+this.email;
    }
 }
 
@@ -107,19 +107,18 @@ class ContactDetails{
    let contactDetailsnew = new ContactDetails("Rahul","Gopala","Mechigan","Detroit","Texas",560085,918886272165,'def@gmail.com');
    console.log(contactDetailsnew.toString());
    try{
-    contactDetailsnew.LastName = "Kumar";
+    contactDetailsnew.LastName = "mohan";
     console.log(contactDetailsnew.toString());
    }catch(e){
     console.error(e);
    }
- 
+
    let contactDetailsanother = new ContactDetails("Shoban","Gopala","BheemreddyNagar","Hyderabad","Telangana",500098,917865456738,'ghj@gmail.com');
    let contactDetailarray = new Array();
-   contactDetailarray.push(contactDetails)
    contactDetailarray.push(contactDetailsnew);
    contactDetailarray.push(contactDetailsanother);
-   console.log("New contact:"+contactDetailarray)
-//    contactDetailarray.forEach((Details) => console.log(Details.toString()));
+   console.log("new contact:"+contactDetailarray)
+   contactDetailarray.forEach((Details) => console.log(Details.toString()));
 
    let object = contactDetailarray.find((Details)=>Details._firstName =='Praveen');
    if(object != undefined){
@@ -133,6 +132,15 @@ class ContactDetails{
     object.setphonenumber(919876566456);
     object.setemail('rhg@gmail.com');
     contactDetailarray.push(object);
+    contactDetailarray.forEach((Details)=> console.log(Details.toString()));
+   }else{
+    console.log('Not found');
+   }
+
+   let objectDelete = contactDetailarray.find((Details)=>Details.firstName ==='Parvathi');
+   if(objectDelete != undefined){
+    contactDetailarray.pop();
+    console.log("Person record deleted");
     contactDetailarray.forEach((Details)=> console.log(Details.toString()));
    }else{
     console.log('Not found');
