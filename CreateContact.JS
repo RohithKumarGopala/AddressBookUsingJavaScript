@@ -107,7 +107,7 @@ class ContactDetails{
    let contactDetailsnew = new ContactDetails("Rahul","Gopala","Mechigan","Detroit","Texas",560085,918886272165,'def@gmail.com');
    console.log(contactDetailsnew.toString());
    try{
-    contactDetailsnew.LastName = "mohan";
+    contactDetailsnew.LastName = "Kumar";
     console.log(contactDetailsnew.toString());
    }catch(e){
     console.error(e);
@@ -145,3 +145,7 @@ class ContactDetails{
    }else{
     console.log('Not found');
    }
+   let count = contactDetailarray.reduce(function count(c){
+    return c+1;
+   },0);
+   console.log(count);
