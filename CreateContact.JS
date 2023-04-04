@@ -24,49 +24,76 @@ class ContactDetails{
     return this._firstName;
    }
     set firstName(firstName){
-    this._firstName =firstName;
+    let firstNameRegex = RegExp('^[A-Z]{1}[a-z]{3,}');
+    if(firstNameRegex.test(firstName))
+    this._firstName = firstName;
+    else throw 'First Name start with capital letter and have minimum 3 character';
    }
     get LastName(){
     return this._LastName;
    }
     set LastName(LastName){
-    this._LastName = LastName;
-   }
+        let LastNameRegex = RegExp('[A-Z]{1}[a-z]{3,}');
+        if(LastNameRegex.test(LastName))
+        this._LastName =LastName;
+        else throw 'Last Name start with capital letter and have minimum 3 character';
+       }
+
    get address(){
     return this._address;
    }
-   set address(address){
-    this._address = address;
-   }
+    set address(address){
+        let addressRegex = RegExp('^[A-Za-z]{4,}');
+        if(addressRegex.test(address))
+        this._address =address;
+        else throw 'Address is Incorrect';
+       }
+
    get city(){
     return this._city;
    }
    set city(city){
-    this._city = city;
+    let cityRegex = RegExp('^[A-Za-z]{4,}');
+    if(cityRegex.test(city))
+    this._city =city;
+    else throw 'city is Incorrect';
    }
+   
    get state(){
     return this._state;
    }
    set state(state){
-    this._state = state;
+    let stateRegex = RegExp('^[A-Za-z]{4,}');
+    if(stateRegex.test(state))
+    this._state =state;
+    else throw 'state is Incorrect';
    }
-   get zip(){
+    get zip(){
     return this._zip;
    }
    set zip(zip){
-    this._zip = zip;
+    let zipRegex = RegExp('^\d{5}(?:[-\s]\d{4})?');
+    if(zipRegex.test(zip))
+    this._zip =zip;
+    else throw 'zip is Incorrect';
    }
    get phonenumber(){
     return this._phonenumber;
    }
    set phonenumber(phonenumber){
-    this._phonenumber = phonenumber;
+    let phonenumberRegex = RegExp('[19]{2}[0-9]{10}');
+    if(phonenumberRegex.test(phonenumber))
+    this._phonenumber =phonenumber;
+    else throw 'phonenumber is Incorrect';
    }
    get email(){
     return this._email;
    }
    set email(email){
-    this._email = email;
+    let emailRegex = RegExp('^([A-Za-z0-9\_\.\-]+)@([a-z]+)\.([a-z]{5}(\.[a-z])?');
+    if(emailRegex.test(email))
+    this._email =email;
+    else throw 'email is Incorrect';
    }
 
  
@@ -77,3 +104,11 @@ class ContactDetails{
 
    let contactDetails = new ContactDetails("Rohith","Gopala","BodUppal","Hyderabad","Telangana",500098,916304871072,'abc@gmail.com');
    console.log(contactDetails.toString());
+   let contactDetailsnew = new ContactDetails("Rahul","Gopala","Mechigan","Detroit","Texas",560085,918886272165,'def@gmail.co.in');
+   console.log(contactDetailsnew.toString());
+   try{
+    contactDetailsnew.LastName = "Kumar";
+    console.log(contactDetailsnew.toString());
+   }catch(e){
+    console.error(e);
+   }
