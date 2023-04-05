@@ -98,7 +98,7 @@ class ContactDetails{
 
  
    toString(){
-    return "firstName:"+this.firstName+"\nLastName:"+this.LastName+"\naddress:"+this.address+"\ncity:"+this.city+"\nstate:"+this.state+"\nzip:"+this.zip+"\nphone:"+this.phonenumber+"\nemail:"+this.email;
+    return "\nfirstName:"+this.firstName+"\nLastName:"+this.LastName+"\naddress:"+this.address+"\ncity:"+this.city+"\nstate:"+this.state+"\nzip:"+this.zip+"\nphone:"+this.phonenumber+"\nemail:"+this.email;
    }
 }
 
@@ -113,14 +113,17 @@ class ContactDetails{
     console.error(e);
    }
 
+   
+
    let contactDetailsanother = new ContactDetails("Shoban","Gopala","BheemreddyNagar","Hyderabad","Telangana",500098,917865456738,'ghj@gmail.com');
    let contactDetailarray = new Array();
    contactDetailarray.push(contactDetailsnew);
    contactDetailarray.push(contactDetailsanother);
    console.log("new contact:"+contactDetailarray)
-   contactDetailarray.forEach((Details) => console.log(Details.toString()));
+  
 
-   let object = contactDetailarray.find((Details)=>Details._firstName =='Praveen');
+  
+   let object = contactDetailarray.find((Details)=>Details._firstName =='kumar');
    if(object != undefined){
     contactDetailarray.pop();
     object.setfirstName('Praveen');
@@ -136,8 +139,8 @@ class ContactDetails{
    }else{
     console.log('Not found');
    }
-
-   let objectDelete = contactDetailarray.find((Details)=>Details.firstName ==='Parvathi');
+    
+   let objectDelete = contactDetailarray.find((Details)=>Details.firstName ==='Shoban');
    if(objectDelete != undefined){
     contactDetailarray.pop();
     console.log("Person record deleted");
@@ -145,7 +148,15 @@ class ContactDetails{
    }else{
     console.log('Not found');
    }
+
+   
    let count = contactDetailarray.reduce(function count(c){
     return c+1;
    },0);
    console.log(count);
+
+   
+
+   let newName = "Rohith";
+   let bool = contactDetailarray.find((object) => object.firstName === newName);
+   console.log(bool);
